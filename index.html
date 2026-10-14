@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Notes Task Board</title>
+    <!-- Google Fonts for authentic handwriting and clean UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-cork">
+    <!-- Top Floating Toolbar for Creating & Managing Sticky Notes -->
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fas fa-thumbtack"></i>
+        </div>
+        <div class="brand-info">
+          <h1>Sticky Board</h1>
+          <span class="badge" id="taskCountBadge">0 Notes</span>
+        </div>
+      </div>
+
+      <!-- Task Input Form -->
+      <form class="form" id="taskForm">
+        <!-- Color Palette Picker -->
+        <div class="color-palette" title="Select sticky note color">
+          <button
+            type="button"
+            class="color-dot active"
+            data-color="yellow"
+            style="--dot-color: #fef08a"
+            aria-label="Yellow"
+          ></button>
+          <button
+            type="button"
+            class="color-dot"
+            data-color="peach"
+            style="--dot-color: #fed7aa"
+            aria-label="Peach"
+          ></button>
+          <button
+            type="button"
+            class="color-dot"
+            data-color="pink"
+            style="--dot-color: #fbcfe8"
+            aria-label="Pink"
+          ></button>
+          <button
+            type="button"
+            class="color-dot"
+            data-color="mint"
+            style="--dot-color: #bbf7d0"
+            aria-label="Mint"
+          ></button>
+          <button
+            type="button"
+            class="color-dot"
+            data-color="sky"
+            style="--dot-color: #bae6fd"
+            aria-label="Sky"
+          ></button>
+          <button
+            type="button"
+            class="color-dot"
+            data-color="lavender"
+            style="--dot-color: #e9d5ff"
+            aria-label="Lavender"
+          ></button>
+        </div>
+
+        <div class="input-wrapper">
+          <input
+            type="text"
+            class="input"
+            id="taskInput"
+            placeholder="Write a sticky note... (Press Enter)"
+            autocomplete="off"
+            maxlength="150"
+          />
+          <button type="submit" class="submit-btn" id="addBtn">
+            <i class="fas fa-plus"></i>
+            <span>Stick It</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Board Action Controls -->
+      <div class="board-actions">
+        <!-- Rearrange / Align to Grid button -->
+        <button
+          type="button"
+          class="tool-btn"
+          id="rearrangeBtn"
+          title="Align all notes neatly in grid"
+        >
+          <i class="fas fa-border-all"></i>
+          <span>Arrange</span>
+        </button>
+
+        <!-- Board Theme Switcher -->
+        <div class="theme-selector-wrap">
+          <button
+            type="button"
+            class="tool-btn"
+            id="themeToggleBtn"
+            title="Change board background"
+          >
+            <i class="fas fa-palette"></i>
+            <span id="themeNameLabel">Cork</span>
+          </button>
+        </div>
+
+        <!-- Clear Completed -->
+        <button
+          type="button"
+          class="tool-btn tool-btn-danger"
+          id="clearCompletedBtn"
+          title="Remove all completed notes"
+        >
+          <i class="fas fa-check-double"></i>
+          <span>Clear Done</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Pinboard Canvas where Sticky Notes are Attached -->
+    <main class="board-canvas" id="boardCanvas">
+      <!-- Container for Sticky Notes -->
+      <div class="sticky-notes-container" id="notesContainer">
+        <!-- Notes are dynamically inserted here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-pin">
+          <i class="fas fa-thumbtack"></i>
+        </div>
+        <h2>Your board is empty!</h2>
+        <p>Type a task in the bar above and stick your first note on the board.</p>
+        <span class="empty-hint">💡 Tip: You can drag sticky notes anywhere on the screen!</span>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
